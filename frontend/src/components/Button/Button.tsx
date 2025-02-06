@@ -1,8 +1,19 @@
 import { Button } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import {Text} from '../../components'
-import { Height, Padding } from '@mui/icons-material'
-import zIndex from '@mui/material/styles/zIndex'
+// import { ExtendButtonBase,ButtonTypeMap } from '@mui/material'
+
+type ButtonProps = {
+  children : string ,
+  icon? : React.ReactNode,
+  onClick? : React.MouseEventHandler<HTMLButtonElement>,
+  onMouseEnter? : React.MouseEventHandler<HTMLButtonElement> | undefined,
+  onMouseLeave? : React.MouseEventHandler<HTMLButtonElement>,
+  key : string
+  // ariaControls? : string | undefined,
+  // ariaHaspopup? : string | undefined
+} 
+// & ExtendButtonBase<ButtonTypeMap<{}, "button">>
 
 const CustomButton = styled(Button)({
     // "&::before": {
@@ -23,11 +34,11 @@ const CustomButton = styled(Button)({
 
 }) as typeof Button
 
-const ButtonComponent = ({children,icon} : {children : string ,icon? : React.ReactNode}) => {
+const ButtonComponent = (props : ButtonProps) => {
   return (
-    <CustomButton sx={{ '&.MuiButton-root:hover':{bgcolor: "rgba(185, 185, 185, 0.2)"} }} startIcon = {icon}>
+    <CustomButton {...props}  sx={{ '&.MuiButton-root:hover':{bgcolor: "rgba(185, 185, 185, 0.2)"} }} >
        <Text>
-            {children}
+            {props.children}
        </Text>
     </CustomButton>
   )
