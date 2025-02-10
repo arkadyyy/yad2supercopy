@@ -1,16 +1,17 @@
 import { Container } from '@mui/material'
-import { Header } from './components'
+import { Carousel, Header } from './components'
 
 
 function App() {
 
   return (
-    <>
+    <div style = {{backgroundColor : '#ffffff',minHeight :'100vh'}}>
     <Header/>
     <Container maxWidth = 'lg'>
-      <h2>yad 2 supercopy</h2>
+      <Carousel/>
+     
     </Container>
-    </>
+    </div>
   )
 }
 

@@ -9,7 +9,10 @@ type ButtonProps = {
   onClick? : React.MouseEventHandler<HTMLButtonElement>,
   onMouseEnter? : React.MouseEventHandler<HTMLButtonElement> | undefined,
   onMouseLeave? : React.MouseEventHandler<HTMLButtonElement>,
-  key : string
+  key : string,
+  id?: string,
+  sx? : any,
+  ref? : any
   // ariaControls? : string | undefined,
   // ariaHaspopup? : string | undefined
 } 
@@ -35,8 +38,9 @@ const CustomButton = styled(Button)({
 }) as typeof Button
 
 const ButtonComponent = (props : ButtonProps) => {
+  const {id,sx,ref} = props
   return (
-    <CustomButton {...props}  sx={{ '&.MuiButton-root:hover':{bgcolor: "rgba(185, 185, 185, 0.2)"} }} >
+    <CustomButton ref = {ref} id = {id}   sx={{ '&.MuiButton-root:hover':{bgcolor: "rgba(185, 185, 185, 0.2)"},...sx }} >
        <Text>
             {props.children}
        </Text>
