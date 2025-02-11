@@ -1,5 +1,5 @@
 import { Box, Button, Menu, MenuItem, useTheme } from "@mui/material";
-import React, { useCallback, useRef, useState } from "react";
+import  { useCallback, useRef, useState } from "react";
 import Image from "../Image/Image";
 import yad2_logo from '../../assets/yad2_logo.png'
 import Text from "../Text/Text";
@@ -142,9 +142,8 @@ const DropdownMenuItem = ({
 
   // THE WHOLE MENU
   return (
-          <Box sx = {{backgroundColor : '#ffffff',display : 'flex',justifyContent : 'space-between',paddingInline : '1rem',height : '75px',boxShadow: '0px 4px 7px rgba(0,0,0,0.07)' }}>
+          <Box sx = {{backgroundColor : '#ffffff',display : 'flex',justifyContent : 'space-between',paddingInline : '1rem',height : '65px',boxShadow: '0px 4px 7px rgba(0,0,0,0.07)' }}>
            <Box sx = {{display : 'flex',flex : 1}}>
-           {/* <Image src={yad2_logo}/> */}
            {menuItems}
            </Box>
            <Box sx = {{display : 'flex',flexDirection : 'row-reverse',flex : 1,justifyContent : 'stretch',alignItems : 'center'}}>

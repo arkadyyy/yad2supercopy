@@ -14,8 +14,8 @@ const Image = ({src,alt,height = '50px',width = '50px'} : ImageProps) => {
     sx={{
       height,
       width,
-      maxHeight: { xs: 233, md: 167 },
-      maxWidth: { xs: 350, md: 250 },
+      // maxHeight: { xs: 233, md: 167 },
+      // maxWidth: { xs: 350, md: 250 },
       alignSelf : 'center',
       objectFit : 'contain'
       
