@@ -5,9 +5,9 @@ const CustomText = styled(Typography)({
     color : '#363636',
 })as typeof Typography
 
-const Text = ({children} : {children : string}) => {
+const Text = ({children} : {children : string | number}) => {
   return (
-    <CustomText textAlign={'right'}>{children}</CustomText>
+    <CustomText  textAlign={'right'}>{children}</CustomText>
   )
 }
 

@@ -142,7 +142,7 @@ const DropdownMenuItem = ({
 
   // THE WHOLE MENU
   return (
-          <Box sx = {{backgroundColor : '#ffffff',display : 'flex',justifyContent : 'space-between',paddingInline : '1rem',height : '65px',boxShadow: '0px 4px 7px rgba(0,0,0,0.07)' }}>
+          <Box sx = {{backgroundColor : '#ffffff90',display : 'flex',justifyContent : 'space-between',paddingInline : '1rem',height : '65px',boxShadow: '0px 4px 7px rgba(0,0,0,0.07)' }}>
            <Box sx = {{display : 'flex',flex : 1}}>
            {menuItems}
            </Box>
