@@ -1,9 +1,17 @@
-import { Box, Container, IconButton } from '@mui/material'
-import { Card, Carousel,  Image, Text } from '../.././components'
+import { Box, Container } from '@mui/material'
+import { Carousel,  Image } from '../.././components'
 import round_buttons_img from '../../assets/round_buttons'
 import {RoundButton} from '../../components'
 import commercial_1 from '../../assets/commercial/commercial_1.png'
-import { Close } from '@mui/icons-material'
+import commercial_3 from '../../assets/commercial/commercial_3.png'
+import LastSearches from './LastSearches/LastSearches'
+import NewAround from './NewAround/NewAround'
+import Recommended from './Recommended/Recommended'
+import PopularServices from './PopularServices/PopularServices'
+import CantMiss from './CantMiss/CantMiss'
+import NextJob from './NextJob/NextJob'
+import Yad2Buisness from './Yad2Buisness/Yad2Buisness'
+import MoreOnSite from './MoreOnSite/MoreOnSite'
 const roundBtnData = [
   {
     title : 'נדל״ן',
@@ -37,39 +45,35 @@ const roundBtnData = [
 function HomePage() {
 
   return (
-    <div style = {{height : '100%'}}>
-    <Container maxWidth = 'lg'>
-      <Carousel/>
-        <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'} marginTop={'3rem'}>
-          {roundBtnData.reverse().map((btn) => (
-          <RoundButton title={btn.title} img={btn.img}/>
-        ))}
-        </Box>
-        <Box 
-            display={'flex'} alignItems={ 'center' } justifyContent={'center'} height={'20rem'}>
-          <Image src={commercial_1} width='80%' height='100%' />
-        </Box>
-
-        {/* last search section */}
-        <Box sx = {{backgroundColor : '#EBEBEB',padding : '1rem',minHeight : '13rem',borderRadius : '8px'}} display={'flex'} justifyContent={'space-between'} paddingInline={'0.5rem'} alignItems={'center'}>
-       
-            {[1,2,3].map((card) => (
-              <Card>
-                 <>
-                 <IconButton ><Close sx={{width : '16px', height : '16px'}}/></IconButton>
-                 <Text>TEST123</Text>
-                 <Text>{card}</Text>
-                 </>
-              </Card>
-            ))}
-
-              <Box>
-              <Text>חיפושים אחרונים</Text>
-              <Text>כל החיפושים</Text>
-              </Box>
-        </Box>
-    </Container>
-    </div>
+    <Box>
+        <Container maxWidth = 'lg'>
+        <Carousel/>
+            <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'} marginTop={'3rem'}>
+                {roundBtnData.reverse().map((btn) => (
+                <RoundButton title={btn.title} img={btn.img}/>
+                ))}
+            </Box>
+            <Box 
+                display={'flex'} alignItems={ 'center' } justifyContent={'center'} height={'20rem'}>
+                 <Image src={commercial_1} width='80%' height='100%' />
+            </Box>
+            <LastSearches/>
+            <NewAround/>
+            <Recommended/>
+            <Box 
+                display={'flex'} alignItems={ 'center' } justifyContent={'center'} height={'20rem'}>
+                 <Image src={commercial_3} width='80%' height='100%' />
+            </Box>
+            <PopularServices/>
+            <CantMiss/>
+            <NextJob/>
+            <Yad2Buisness/>
+           
+         
+            </Container>
+            <MoreOnSite/>
+      
+    </Box>
   )
 }
 

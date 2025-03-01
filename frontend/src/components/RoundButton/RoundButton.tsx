@@ -27,7 +27,7 @@ const RoundButton = ({title,img} : {title : string,img : string}) => {
             <CustomBox>
                 <Image width='90%' height='90%' src={img}/>
             </CustomBox>
-            <Text>{title}</Text>
+            <Text marginTop={'0.5rem'} fontWeight={'400'} fontSize={'19px'}>{title}</Text>
     </Box>   
   )
 }

@@ -144,11 +144,11 @@ const DropdownMenuItem = ({
   return (
           <Box sx = {{backgroundColor : '#ffffff90',display : 'flex',justifyContent : 'space-between',paddingInline : '1rem',height : '65px',boxShadow: '0px 4px 7px rgba(0,0,0,0.07)' }}>
            <Box sx = {{display : 'flex',flex : 1}}>
-           {menuItems}
+            {menuItems}
            </Box>
            <Box sx = {{display : 'flex',flexDirection : 'row-reverse',flex : 1,justifyContent : 'stretch',alignItems : 'center'}}>
            <Image src={yad2_logo}/>
-           {menuItems}
+            {menuItems}
           
            </Box>
           </Box>

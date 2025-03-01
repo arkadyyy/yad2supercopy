@@ -5,7 +5,7 @@ type ImageProps  = {
     alt? : string,
     height?: string,
     width?: string
-}
+} & React.ComponentProps<typeof Box>
 
 const Image = ({src,alt,height = '50px',width = '50px'} : ImageProps) => {
   return (

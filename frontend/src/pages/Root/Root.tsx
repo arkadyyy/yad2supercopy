@@ -5,7 +5,7 @@ import { Outlet } from 'react-router'
 
 const Root = () => {
   return (
-   <Box margin={0} position={'relative'} height={'300vh'} bgcolor={'#ffffff'}>
+   <Box sx = {{overflowX : 'hidden'}} margin={0} position={'relative'} height={'400vh'} bgcolor={'#ffffff'}>
     
     <Header/>
     <Outlet/>

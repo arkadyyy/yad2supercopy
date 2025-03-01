@@ -5,7 +5,7 @@ const CustomText = styled(Typography)({
     color : '#363636',
 })as typeof Typography
 
-type PropTypes = {children : string | number} & React.ComponentProps<typeof Typography>
+type PropTypes = {children : string | number | string[]} & React.ComponentProps<typeof Typography>
 
 
 const Text = (props : PropTypes) => {

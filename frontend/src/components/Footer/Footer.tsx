@@ -42,7 +42,7 @@ const RoundBtn = ({img,url} : {img : string,url : string}) => {
 
 const Footer = () => {
   return (
-    <Box margin={0} position={'relative'} bottom={'0px'} bgcolor={'#2f2f2f'} width={'100%'} height={'45vh'}>
+    <Box margin={0} position={'absolute'} bottom={'0px'} bgcolor={'#2f2f2f'} width={'100%'} height={'45vh'}>
         <Container style={{display : 'flex', flexDirection : 'row-reverse' ,alignItems : 'flex-start',justifyContent : 'space-between'}}>
            {menu.map((menuItem,key) => (
             <Box marginTop={'4rem'} paddingRight={'4rem'} alignItems={'end'} display={'flex'} flexDirection={'column'} key={key}>
