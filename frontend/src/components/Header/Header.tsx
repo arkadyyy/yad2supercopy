@@ -3,30 +3,74 @@ import  { useCallback, useRef, useState } from "react";
 import Image from "../Image/Image";
 import yad2_logo from '../../assets/yad2_logo.png'
 import Text from "../Text/Text";
+import { useNavigate } from "react-router";
 export type TMenuItem = {
   title: string;
   pathname?: string;
   subMenus?: TMenuItem[];
+  icon? : string,
+  subMenusServices? : TMenuItem[]
 };
 
-export const MENU_ITEMS: TMenuItem[] = [
+ const LEFT_MENU_ITEMS : TMenuItem[] = [
+
+]
+
+ const RIGHT_MENU_ITEMS: TMenuItem[] = [
   {
-    title: "Home",
-    pathname: "/"
+    title: "נדל״ן",
+    pathname: "/realestate",
+    subMenus : [
+      {title : "דירות למכירה",pathname : '/'},
+      {title : "דירות להשכרה",pathname : '/'},
+      {title : "נדלן מסחרי",pathname : '/'},
+      {title : "עסקים למכירה",pathname : '/'},
+    
+    ],
+    subMenusServices : [
+      {title : "יד2 דירות חדשות",pathname : '/',icon : ''},
+      {title : "כונס נכסים",pathname : '/',icon : ''},
+      {title : "הערכת שווי נכס",pathname : '/',icon : ''},
+      {title : "משרדי תיווך בישראל",pathname : '/',icon : ''},
+      {title : "ייעוץ משכנתאות",pathname : '/',icon : ''},
+    ]
   },
 
   {
-    title: "about",
-    pathname: "/about",
+    title: "רכב",
+    pathname: "/vehicles/cars",
     subMenus: [
-      {
-        title: "a",
-        pathname: "/about/a"
-      },
-      {
-        title: "b",
-        pathname: "/about/b"
-      }
+      {title : "פרטים ומסחריים",pathname : '/'},
+      {title : "אופנועים",pathname : '/'},
+      {title : "קטנועים",pathname : '/'},
+      {title : "מיוחדים",pathname : '/'},
+      {title : "אביזרים",pathname : '/'},
+      {title : "משאיות",pathname : '/'},
+      {title : "כלי שייט",pathname : '/'},
+    ],
+    subMenusServices : [
+      {title : "מחירון רכב",pathname : '/',icon : ''},
+      {title : "מימון רכב",pathname : '/',icon : ''},
+      {title : "רכב מכונס נכסים",pathname : '/',icon : ''},
+    ]
+  },
+  {
+    title: "יד שנייה",
+    pathname: "/second-hand",
+    subMenus: [
+      {title : "כל המוצרים",pathname : '/'},
+      {title : "מוצרי חשמל",pathname : '/'},
+      {title : "ריהוט",pathname : '/'},
+      {title : "ספורט",pathname : '/'},
+      {title : "סלולרי",pathname : '/'},
+      {title : "לתינוק ולרכב",pathname : '/'},
+      {title : "הכל בחינם",pathname : '/'},
+      {title : "קונסולות",pathname : '/'},
+    ],
+    subMenusServices : [
+      {title : "מחירון רכב",pathname : '/',icon : ''},
+      {title : "מימון רכב",pathname : '/',icon : ''},
+      {title : "רכב מכונס נכסים",pathname : '/',icon : ''},
     ]
   }
 ];
@@ -34,11 +78,13 @@ export const MENU_ITEMS: TMenuItem[] = [
 const DropdownMenuItem = ({
   menuItem,
   menuShowingDropdown,
-  setMenuShowingDropdown
+  setMenuShowingDropdown,
+  onClick
 }: {
   menuItem: TMenuItem;
   menuShowingDropdown: string;
   setMenuShowingDropdown: (menuTitle: string) => void;
+  onClick : () => void
 }) => {
   const { title, subMenus } = menuItem;
   const buttonRef = useRef<null | HTMLButtonElement>(null);
@@ -54,12 +100,11 @@ const DropdownMenuItem = ({
   const subMenusNodes = subMenus?.map((subMenuItem) => {
     return (
       <MenuItem
-        onClick={() => {
-          console.log("second level menu tiem click");
-        }}
+
         key={subMenuItem.title}
+        sx = {{alignItems : 'center',marginBottom : '0.4rem',display : 'flex',justifyContent : 'flex-end' ,"&:hover" : {backgroundColor : 'transparent'}}}
       >
-        {subMenuItem.title}
+       <Text sx = {{"&:hover" : {color : 'orange'}}}> {subMenuItem.title}</Text>
       </MenuItem>
     );
   });
@@ -74,11 +119,7 @@ const DropdownMenuItem = ({
         // higher zIndex to make button show submenu when move mouse from another submenu
        
         ref={buttonRef}
-        onClick={() => {
-          if (!menuItem.subMenus) {
-            console.log("first level menu click");
-          }
-        }}
+        onClick={onClick}
         onMouseLeave={() => {
           setMenuShowingDropdown("");
         }}
@@ -95,6 +136,7 @@ const DropdownMenuItem = ({
        
       </Button>
       <Menu
+       
         transitionDuration={0}
         slotProps={{
           paper : 
@@ -103,10 +145,13 @@ const DropdownMenuItem = ({
           },
           onMouseLeave :() => {
           closeSubMenu();
-          }}
+          },
+          sx : {padding : '0.4rem'}
+        }
         }
         }
         anchorEl={buttonRef.current}
+        // open={true}
         open={menuShowingDropdown === menuItem.title}
         onClose={closeSubMenu}
       >
@@ -118,17 +163,19 @@ const DropdownMenuItem = ({
 
  const TopMenu = () => {
   const [menuShowingDropdown, setMenuShowingDropdown] = useState("");
+  const navigate = useNavigate()
 
   const handleMenuShowingDropdownChange = useCallback((menuTitle: string) => {
     setMenuShowingDropdown(menuTitle);
   }, []);
 
 
-  //MENU ITEMS
-  const menuItems = MENU_ITEMS.map((menuItem) => {
+  //RIGHT MENU ITEMS
+  const rightMenuItems = RIGHT_MENU_ITEMS.map((menuItem) => {
     return (
       <>
        <DropdownMenuItem
+        onClick = {() => navigate(menuItem.pathname!)}
         key={menuItem.title}
         menuItem={menuItem}
         menuShowingDropdown={menuShowingDropdown}
@@ -140,17 +187,39 @@ const DropdownMenuItem = ({
     );
   });
 
+  //LEFT MENU ITEMS
+
+  const leftMenuItems = LEFT_MENU_ITEMS.map((menuItem) => {
+    return (
+      <>
+       <DropdownMenuItem
+
+        key={menuItem.title}
+        menuItem={menuItem}
+        menuShowingDropdown={menuShowingDropdown}
+        setMenuShowingDropdown={handleMenuShowingDropdownChange}
+      />
+      
+      </>
+      
+    );
+  });
+
+
   // THE WHOLE MENU
   return (
-          <Box sx = {{backgroundColor : '#ffffff90',display : 'flex',justifyContent : 'space-between',paddingInline : '1rem',height : '65px',boxShadow: '0px 4px 7px rgba(0,0,0,0.07)' }}>
-           <Box sx = {{display : 'flex',flex : 1}}>
-            {menuItems}
+          <Box sx = {{backgroundColor : '#ffffff90',display : 'flex',paddingInline : '1rem',height : '65px',boxShadow: '0px 4px 7px rgba(0,0,0,0.07)' }}>
+            {/* right side header */}
+           <Box sx = {{display : 'flex',flex : 1,alignItems : 'center',marginInline : '0.4rem'}}>
+           <Image onClick={() => navigate('/') }  width={'4.5rem'} height={'4.5rem'} src={yad2_logo} sx ={{cursor : 'pointer'}}/>
+            {rightMenuItems}
            </Box>
-           <Box sx = {{display : 'flex',flexDirection : 'row-reverse',flex : 1,justifyContent : 'stretch',alignItems : 'center'}}>
-           <Image src={yad2_logo}/>
-            {menuItems}
-          
+
+             {/* left side header */}
+             <Box sx = {{display : 'flex',flex : 1}}>
+            {leftMenuItems}
            </Box>
+
           </Box>
   )
 };

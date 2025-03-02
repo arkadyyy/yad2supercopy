@@ -1,43 +1,42 @@
 // import React from 'react'
-// import { Box } from '@mui/material'
-// import { styled } from '@mui/material/styles';
+
 import './carousel.css'
 import carousel_img_1 from '../../assets/top_carousel/top_carousel_img_1.png'
 import carousel_img_2 from '../../assets/top_carousel/top_carousel_img_2.png'
 import carousel_img_3 from '../../assets/top_carousel/top_carousel_img_3.png'
-// const CustomContainer = styled(Box)({
-//     width : '80%',
-//     textAlign : 'center',
-//     overflow : 'hidden'
-// })
-// const CarouselElement = styled(Box)({
 
-// })
 
 const Carousel = () => {
   return (
-   <div style = {{marginTop : '2rem',position : 'relative'}}>
-    <div className="carousel-container">
-        <div className="carousel-element">
-        <img className="carousel-element" style={{alignSelf : 'center',objectFit : 'contain',width : '100%',height :'100%'}} src={carousel_img_1}/>
 
-            <div className="carousel-snapper"></div>
+<div id="homepage-slider" className="st-slider">
+    <input type="radio" className="cs_anchor radio" name="slider" id="slide1"/>
+    <input type="radio" className="cs_anchor radio" name="slider" id="slide2"/>
+    <input type="radio" className="cs_anchor radio" name="slider" id="slide3"/>
+    <input type="radio" className="cs_anchor radio" name="slider" id="play1" checked={true}/>
+
+    <div className="images">
+       <div className="images-inner">
+        <div className="image-slide">
+          <img className="image"  src={carousel_img_1}/>
         </div>
-        <div className="carousel-element">
-        <img className="carousel-element"  style={{alignSelf : 'center',objectFit : 'contain',width : '100%',height :'100%'}}  src={carousel_img_2}/>
-            <div className="carousel-snapper"></div>
+        <div className="image-slide">
+        <img className="image"  src={carousel_img_2}/>
         </div>
-        <div className="carousel-element">
-        <img className="carousel-element"  style={{alignSelf : 'center',objectFit : 'contain',width : '100%',height :'100%'}}  src={carousel_img_3}/>
-            <div className="carousel-snapper"></div>
+        <div className="image-slide">
+          <img className="image"  src={carousel_img_3}/>
+        </div>
+      </div>
+    </div>
+  
+    <div className="labels">  
+        <div className="fake-radio">
+          <label htmlFor="slide1" className="radio-btn"></label>
+          <label htmlFor="slide2" className="radio-btn"></label>
+          <label htmlFor="slide3" className="radio-btn"></label>
         </div>
     </div>
-    <div style={{position : 'absolute',bottom : '2.5rem',right:'3rem',display : 'flex'}}>
-        {[1,2,3].map((carouselItem) => (
-            <div style = {{backgroundColor : 'transparent' ,border : '1px solid #FE7102',borderRadius : '50%',width : '7px',height : '7px',marginInline : '8px'}}></div>
-        ))}
-    </div>
-   </div>
+</div>
   )
 }
 

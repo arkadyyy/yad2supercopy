@@ -1,139 +1,165 @@
-
-
-/* removes the scroller*/
-*::-webkit-scrollbar {
-    width: 0;
-  }
-  
-  *::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  *::-webkit-scrollbar-thumb {
-    background: transparent;
-    border: none;
-  }
-  
-  * {
-    -ms-overflow-style: none;
-  }
-/* end removes scroller */
-
-.carousel-container {
-    /* position: absolute; */
-    /* top: 0; */
-    /* right: 0; */
-    /* bottom: 0; */
-    /* left: 0; */
-
-    display: flex;
-    /* height: clamp(30vh, 88vh, 430px); */
-    width: '500px' ;
-    /* height : '300px'; */
-    /* margin: 8px auto; */
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    overflow-x: scroll;
-    /* background-color: red; */
-    border-radius: 12px;
-  }
-
-.carousel-element {
-    cursor: pointer;
-    position: relative;
-    flex: 0 0 100%;
-    background-size: 780px 100%;
-    background-repeat: no-repeat;
-    /* border: 1px solid rgba(164, 32, 32, 0.25); */
-    /* border-radius: 4px; */
-    /* padding: 0 10px; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: space-evenly; */
-  }
-  .carousel-snapper {
-    position: absolute;
-  top: 0;
-  left: 0;
+.image {
   width: 100%;
-  scroll-snap-align: center;
-  }  
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.radio {
+  display: none;
+}
+.images {
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-radius: 8px;
+}
+.images-inner {
+  width: 500%;
+  transition: all 800ms ease;
+  transition-timing-function: ease;
+ 
+}
+.image-slide {
+  width: 20%;
+  float: left;
+}
+.image-slide,
+.fake-radio,
+.radio-btn {
+  transition: all 0.5s ease-out;
+}
+.fake-radio {
+  float: right;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
 
 
 
 
-  
-  @media (hover: hover) {
-    .carousel-snapper {
-      animation-name: tonext, snap;
-      animation-timing-function: ease;
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-    }
-  
-    .weather-template:last-child .carousel-snapper {
-      animation-name: tostart, snap;
-    }
-  }
-  
-  /* carousel animation reference article: https://css-tricks.com/css-only-carousel/ */
-  @keyframes tonext {
-    75% {
-      left: 0;
-    }
-    95% {
-      left: 100%;
-    }
-    98% {
-      left: 100%;
-    }
-    99% {
-      left: 0;
-    }
-  }
-  
-  @keyframes tostart {
-    0% {
-        left: 0;
-      }
-    75% {
-      left: 0;
-    }
-    95% {
-      left: -300%;
-    }
-    98% {
-      left: -300%;
-    }
-    99% {
-      left: 0;
-    }
-  }
-  
-  @keyframes snap {
-    96% {
-      scroll-snap-align: center;
-    }
-    97% {
-      scroll-snap-align: none;
-    }
-    99% {
-      scroll-snap-align: none;
-    }
-    100% {
-      scroll-snap-align: center;
-    }
-  }
+/* Move slides overflowed container */
+#slide1:checked ~ .images .images-inner {
+  margin-left: 0;
+}
+#slide2:checked ~ .images .images-inner {
+  margin-left: -100%;
+}
+#slide3:checked ~ .images .images-inner {
+  margin-left: -200%;
+}
 
-  @media (hover: hover) {
-    .carousel-container {
-      animation-name: tonext, snap;
-      animation-timing-function: ease;
-      animation-duration: 4s;
-      animation-iteration-count: infinite;
-    }
-  
-    .carousel-element:last-child .carousel-snapper{
-      animation-name: tostart, snap;
-    }
+
+
+
+/* Color of bullets */
+#slide1:checked ~ div .fake-radio .radio-btn:nth-child(1),
+#slide2:checked ~ div .fake-radio .radio-btn:nth-child(2),
+#slide3:checked ~ div .fake-radio .radio-btn:nth-child(3) {
+  background: orange;
+}
+.radio-btn {
+  width: 9px;
+  height: 9px;
+  border-radius: 5px;
+  background: transparent;
+  border : 1px solid orange;
+  display: inline-block !important;
+  margin: 0 4px;
+  cursor: pointer;
+}
+/* Color of bullets - END */
+
+
+
+
+/* Text of slides */
+#slide1:checked ~ .labels .label:nth-child(1),
+#slide2:checked ~ .labels .label:nth-child(2),
+#slide3:checked ~ .labels .label:nth-child(3) {
+  opacity: 1;
+}
+
+.label {
+  opacity: 0;
+  position: absolute;
+}
+/* Text of slides - END */
+
+
+
+/* Calculate AUTOPLAY for BULLETS */
+@keyframes bullet {
+  0%, 33.32333333333334%	{
+    background: orange;
   }
+  33.333333333333336%, 100% {
+    background: transparent;
+  }
+}
+
+
+#play1:checked ~ div .fake-radio .radio-btn:nth-child(1) {
+  animation: bullet 12300ms infinite -1000ms;
+}
+
+#play1:checked ~ div .fake-radio .radio-btn:nth-child(2) {
+  animation: bullet 12300ms infinite 3100ms;	
+}
+
+#play1:checked ~ div .fake-radio .radio-btn:nth-child(3) {
+  animation: bullet 12300ms infinite 7200ms;	
+}
+/* Calculate AUTOPLAY for BULLETS - END */
+
+
+
+
+/* Calculate AUTOPLAY for SLIDES */
+@keyframes slide {
+  0%, 25.203252032520325%	{ margin-left: 0; }
+  33.333333333333336%, 58.53658536585366%	{ margin-left: -100%; }
+  66.66666666666667%, 91.869918699187%	{ margin-left: -200%; }
+}
+
+
+.st-slider > #play1:checked ~ .images .images-inner {
+  animation: slide 12300ms infinite;
+  border-radius: 8px;
+  margin-top: 2.4rem;	
+}
+/* Calculate AUTOPLAY for SLIDES - END */
+
+
+
+
+
+/* Calculate AUTOPLAY for CAPTION */
+@keyframes caption {
+  0%, 33.32333333333334%	{
+    opacity: 1;
+  }
+  33.333333333333336%, 100% {
+    opacity: 0;
+  }
+}
+
+
+#play1:checked ~ .labels .label:nth-child(1) {
+  animation: caption 12300ms infinite -1000ms;
+}
+
+#play1:checked ~ .labels .label:nth-child(2) {
+  animation: caption 12300ms infinite 3100ms;	
+}
+
+#play1:checked ~ .labels .label:nth-child(3) {
+  animation: caption 12300ms infinite 7200ms;	
+}
+/* Calculate AUTOPLAY for CAPTION - END */
+
+
