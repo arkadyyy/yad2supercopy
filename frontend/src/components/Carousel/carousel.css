@@ -1,3 +1,6 @@
+
+/* https://codepen.io/miriamcc/pen/KzGGqZ */
+
 .image {
   width: 100%;
   height: 100%;
@@ -5,9 +8,11 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
 .radio {
   display: none;
 }
+
 .images {
   overflow: hidden;
   top: 0;
@@ -25,7 +30,8 @@
 }
 .image-slide {
   width: 20%;
-  float: left;
+  /* * */
+  float: right;
 }
 .image-slide,
 .fake-radio,
@@ -33,10 +39,11 @@
   transition: all 0.5s ease-out;
 }
 .fake-radio {
+  /* * */
   float: right;
   position: absolute;
   bottom: 10px;
-  right: 20px;
+  left: 20px;
 }
 
 
@@ -44,13 +51,14 @@
 
 /* Move slides overflowed container */
 #slide1:checked ~ .images .images-inner {
-  margin-left: 0;
+  margin-right: 0;
+
 }
 #slide2:checked ~ .images .images-inner {
-  margin-left: -100%;
+  margin-right: -100%;
 }
 #slide3:checked ~ .images .images-inner {
-  margin-left: -200%;
+  margin-right: -200%;
 }
 
 
@@ -73,24 +81,6 @@
   cursor: pointer;
 }
 /* Color of bullets - END */
-
-
-
-
-/* Text of slides */
-#slide1:checked ~ .labels .label:nth-child(1),
-#slide2:checked ~ .labels .label:nth-child(2),
-#slide3:checked ~ .labels .label:nth-child(3) {
-  opacity: 1;
-}
-
-.label {
-  opacity: 0;
-  position: absolute;
-}
-/* Text of slides - END */
-
-
 
 /* Calculate AUTOPLAY for BULLETS */
 @keyframes bullet {
@@ -121,9 +111,9 @@
 
 /* Calculate AUTOPLAY for SLIDES */
 @keyframes slide {
-  0%, 25.203252032520325%	{ margin-left: 0; }
-  33.333333333333336%, 58.53658536585366%	{ margin-left: -100%; }
-  66.66666666666667%, 91.869918699187%	{ margin-left: -200%; }
+  0%, 25.203252032520325%	{ margin-right: 0%; }
+  33.333333333333336%, 58.53658536585366%	{ margin-right: -100%; }
+  66.66666666666667%, 91.869918699187%	{ margin-right: -200%; }
 }
 
 
@@ -138,28 +128,5 @@
 
 
 
-/* Calculate AUTOPLAY for CAPTION */
-@keyframes caption {
-  0%, 33.32333333333334%	{
-    opacity: 1;
-  }
-  33.333333333333336%, 100% {
-    opacity: 0;
-  }
-}
-
-
-#play1:checked ~ .labels .label:nth-child(1) {
-  animation: caption 12300ms infinite -1000ms;
-}
-
-#play1:checked ~ .labels .label:nth-child(2) {
-  animation: caption 12300ms infinite 3100ms;	
-}
-
-#play1:checked ~ .labels .label:nth-child(3) {
-  animation: caption 12300ms infinite 7200ms;	
-}
-/* Calculate AUTOPLAY for CAPTION - END */
 
 

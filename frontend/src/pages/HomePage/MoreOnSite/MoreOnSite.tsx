@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Container } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { Button, Card, Link, Text,} from '../../../components'
+import { useNavigate } from 'react-router'
 
 const BUTTONS = [
     {text : 'נדלן', url : '/'},
@@ -50,22 +51,22 @@ const CustomBox = styled(Box)({
   }) as typeof Box
 
 const MoreOnSite = () => {
+    const navigate = useNavigate()
+
   return (
     <CustomBox>
-           <Container sx = {{display : 'flex',flexDirection : 'row-reverse'}}>
+           <Container sx = {{display : 'flex'}}>
             <Box flex = {2}>
             <Text fontSize={'22px'}>עוד באתר</Text>
-                <Box flexDirection={'row-reverse'} display={'flex'}>
+                <Box display={'flex'}>
                     {BUTTONS.map((btn,key) => (
-                        <Button>
-                        <Link to={btn.url}>
-                                <Text>{btn.text}</Text>
-                        </Link>
+                        <Button key={key+btn.text} onClick={() => navigate(btn.url)}>
+                               {btn.text}
                         </Button>
                     ))}
                 </Box>
                 {/* links */}
-                <Box display={'flex'} flexDirection={'row-reverse'}>
+                <Box display={'flex'}>
                     {LINKS.map((category,key) => (
                         <Box key={key} display={'flex'} flexDirection={'column'} marginBlock={'2rem'} marginLeft={'4rem'}>
                             <Text fontSize={'18px'} fontWeight={'600'}>{category.header}</Text>
@@ -86,7 +87,7 @@ const MoreOnSite = () => {
                    
                     <Text>יש לכם שאלה? נשמח לעזור !</Text>
                     <Text>בימים ב׳-ה׳ בין השעות 8:30-16:00</Text>
-                    <Button fontWeight={'600'} fontColor='orange'>צרו קשר</Button>
+                    <Button fontWeight={'600'}>צרו קשר</Button>
                    
                 </Card>
            </Container>

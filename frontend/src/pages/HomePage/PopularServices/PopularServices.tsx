@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card, Image, Text } from '../../../components'
 import { Box } from '@mui/material'
 import comm_realestate from '../../../assets/popular_services/comm_realestate.png'
@@ -17,28 +16,23 @@ const DATA = [
 const PopularServices = () => {
   return (
     <Box>
-    {/* /header */}
-    <Box display={'flex'} flexDirection={'row-reverse'} alignItems={'center'}>
-        <Text fontWeight={'400'} fontSize={'25px'}>שירותים פופולאריים</Text>
-       
+        {/* /header */}
+        <Box display={'flex'} alignItems={'center'}>
+            <Text fontWeight={'400'} fontSize={'25px'}>שירותים פופולאריים</Text>
+        </Box>
+        <Box display={'flex'}>
+            {DATA.map((service,key) => (
+                <Card direction='row' sx = {{alignItems : 'center',justifyContent : 'center',height : '80px',margin : '0.5rem',padding : '0.5rem'}} key={key}>
+                    <Image width={'50px'} height={'50px'} flex={1} src={service.img}/>
+                    <Box flex={2}>
+                        <Text fontSize={'14px'} fontWeight={'500'}>{service.text}</Text>
+                        <Text fontSize={'12px'}>{service.subtext}</Text>
+                    </Box>
+                </Card>
+            ))}
+                    
+        </Box>
     </Box>
-
-    {/* carousel */}
-           <Box display={'flex'} flexDirection={'row-reverse'}>
-                {DATA.map((service,key) => (
-                    <Card sx = {{display : 'flex',alignItems : 'center',height : '80px',margin : '0.5rem',padding : '0.5rem'}} key={key}>
-                       <>
-                        <Box flex={2}>
-                            <Text fontSize={'14px'} fontWeight={'500'}>{service.text}</Text>
-                            <Text fontSize={'12px'}>{service.subtext}</Text>
-                        </Box>
-                        <Image flex={1} src={service.img}/>
-                       </>
-                    </Card>
-                ))}
-                
-            </Box>
-</Box>
   )
 }
 

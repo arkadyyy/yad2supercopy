@@ -6,24 +6,36 @@ type ButtonProps = {
   children : string ,
   filled? : boolean,
   fontColor? : string,
+  borderNone? : boolean,
 }  & React.ComponentProps<typeof Button> & React.ComponentProps<typeof Text>
 
 const CustomButton = styled(Button)({
-  paddingInline : '1.6rem',
-  paddingBlock : '0.3rem',
+  // paddingInline : '1.6rem',
+  // paddingBlock : '0.3rem',
   textAlign : 'center',
   borderRadius : '2rem',
-  marginLeft : '0.6rem',
+  // marginLeft : '0.6rem',
   marginBlock : '0.3rem',
+  // position : 'relative',
+  // width : '100%',
+  
+  "& .MuiButton-endIcon": {
+    paddingInline : '2px'
+},
+// "& .MuiButton-startIcon": {
+//     position: "absolute",
+//     // left: "1rem",
+// },
+
 
 
 }) as typeof Button
 
 const ButtonComponent = (props : ButtonProps) => {
-  const {filled = false,fontColor} = props
+  const {filled = false,fontColor,borderNone = false} = props
   return (
-    <CustomButton {...props} sx = {{backgroundColor : filled ? '#FE7102' : 'transparent' , border : filled ? '1px solid transparent' : '1px solid #D9D9D9'}} >
-       <Text {...props} fontSize={'16px'} color={fontColor ? fontColor : filled ? '#ffffff' : '#303030'}>
+    <CustomButton {...props} sx = {{...props.sx,backgroundColor : filled ? '#FE7102' : 'transparent' , border : borderNone ? 'none' : filled ? '1px solid transparent' : '1px solid #D9D9D9'}}  >
+       <Text fontSize={'16px'} color={fontColor ? fontColor : filled ? '#ffffff' : '#303030'} {...props} >
             {props.children}
        </Text>
     </CustomButton>

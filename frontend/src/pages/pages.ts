@@ -1,3 +1,5 @@
 export {default as HomePage} from './HomePage/HomePage'
-export {default as CarPage} from './CarPage/CarPage'
+export {default as VehicelsPage} from './VehiclesPage/VehicelsPage'
+export {default as VehiclePage} from './VehiclePage/VehiclePage'
+export {default as RealestatePage} from './RealestatePage/RealestatePage'
 export {default as Root} from './Root/Root'

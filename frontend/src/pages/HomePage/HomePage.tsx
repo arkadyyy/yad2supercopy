@@ -47,14 +47,14 @@ function HomePage() {
   return (
     <Box>
         <Container maxWidth = 'lg'>
-        <Carousel/>
+          <Carousel/>
             <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'} marginTop={'3rem'}>
-                {roundBtnData.reverse().map((btn) => (
+                {roundBtnData.map((btn) => (
                 <RoundButton title={btn.title} img={btn.img}/>
                 ))}
             </Box>
-            <Box 
-                display={'flex'} alignItems={ 'center' } justifyContent={'center'} height={'20rem'}>
+            {/* commercial */}
+            <Box display={'flex'} alignItems={ 'center' } justifyContent={'center'} height={'20rem'}>
                  <Image src={commercial_1} width='80%' height='100%' />
             </Box>
             <LastSearches/>
@@ -68,8 +68,6 @@ function HomePage() {
             <CantMiss/>
             <NextJob/>
             <Yad2Buisness/>
-           
-         
             </Container>
             <MoreOnSite/>
       

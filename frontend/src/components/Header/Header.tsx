@@ -211,7 +211,7 @@ const DropdownMenuItem = ({
           <Box sx = {{backgroundColor : '#ffffff90',display : 'flex',paddingInline : '1rem',height : '65px',boxShadow: '0px 4px 7px rgba(0,0,0,0.07)' }}>
             {/* right side header */}
            <Box sx = {{display : 'flex',flex : 1,alignItems : 'center',marginInline : '0.4rem'}}>
-           <Image onClick={() => navigate('/') }  width={'4.5rem'} height={'4.5rem'} src={yad2_logo} sx ={{cursor : 'pointer'}}/>
+           <Image onClick={() => navigate('/') } src={yad2_logo} sx ={{cursor : 'pointer'}}/>
             {rightMenuItems}
            </Box>
 

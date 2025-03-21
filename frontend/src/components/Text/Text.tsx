@@ -3,6 +3,12 @@ import { styled } from '@mui/material/styles';
 
 const CustomText = styled(Typography)({
     color : '#363636',
+    // backgroundColor : 'green',
+    minWidth : 0,
+    margin : 0,
+    width : 'auto'
+    
+    
 })as typeof Typography
 
 type PropTypes = {children : string | number | string[]} & React.ComponentProps<typeof Typography>
@@ -10,7 +16,7 @@ type PropTypes = {children : string | number | string[]} & React.ComponentProps<
 
 const Text = (props : PropTypes) => {
   return (
-    <CustomText {...props} style = {{color : props.color ? props.color : ''}} textAlign={'right'}>{props.children}</CustomText>
+    <CustomText  sx = {{color : props.color ? props.color : '',...props}} textAlign={'right'} {...props}>{props.children}</CustomText>
   )
 }
 

@@ -35,25 +35,24 @@ const CloseBtn = () => {
 const LastSearches = () => {
   return (
     <Box sx = {{backgroundColor : '#F8F8F8',minHeight : '10rem',borderRadius : '8px',padding : '2rem'}} display={'flex'} justifyContent={'space-between'} paddingInline={'0.5rem'} alignItems={'flex-start'}>
-       
+       <Box  height={'100%'} ml={'1rem'}>
+        <Text fontWeight={'600'} fontSize={'1.3rem'}>חיפושים אחרונים</Text>
+        <Link to = {'/'}>
+        <Text fontWeight={'500'} fontSize={'14px'} color='#FE7102'>{" כל החיפושים >"} </Text>
+        </Link>
+      </Box>
+
     {[1,2,3].map((card) => (
-      <Card sx = {{height : '90px',padding : '0.5rem'}}>
-         <>
+      <Card  sx = {{height : '90px',padding : '0.5rem',marginInline : '0.2rem'}}>
         <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
-        <CloseBtn/>
-        <Text color='#7e7e7e' fontSize={'12px'}>נדל״ן - השכרה</Text>
+          <Text color='#7e7e7e' fontSize={'12px'}>נדל״ן - השכרה</Text>
+          <CloseBtn/>
         </Box>
          <Text color='#676666' fontSize={'12px'}>עיר הרצליה חדרים עד - 1.5</Text>
-         </>
       </Card>
     ))}
 
-      <Box  height={'100%'}>
-      <Text fontWeight={'600'} fontSize={'1.3rem'}>חיפושים אחרונים</Text>
-      <Link to = {'/'}>
-      <Text fontWeight={'500'} fontSize={'14px'} color='#FE7102'>{" < כל החיפושים "} </Text>
-      </Link>
-      </Box>
+      
 </Box>
   )
 }

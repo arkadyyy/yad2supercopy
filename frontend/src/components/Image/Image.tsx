@@ -7,19 +7,20 @@ type ImageProps  = {
     width?: string
 } & React.ComponentProps<typeof Box>
 
-const Image = ({src,alt,height = '100%',width = '100%'} : ImageProps) => {
+const Image = (props : ImageProps) => {
+  const {src,alt,height = '100%',width = '100%'} = props
   return (
     <Box
     component="img"
     sx={{
-      height,
-      width,
-      // maxHeight: { xs: 233, md: 167 },
-      // maxWidth: { xs: 350, md: 250 },
+      height ,
+      width  ,
       alignSelf : 'center',
       objectFit : 'contain'
       
     }}
+    {...props}
+    
     alt={alt}
     src={src}
   />
